@@ -21,3 +21,17 @@ customers.forEach(m => console.log(`${m.address.city} - ${m.companyName}`));
 title('(3) display city - customerName only for those from London');
 customers.filter(m => m.address.city === 'London').forEach(m => console.log(`${m.address.city} - ${m.companyName}`));
 
+title('(3.1) get array of customers from London');
+console.log(customers.filter(m => m.address.city === 'London'));
+// const getCustomersFromLondon = () => {
+// 	const custs = []; 
+// 	customers.forEach(m => {
+// 		if (m.address.city === 'London') {
+// 			custs.push(m);
+// 		}
+// 	});
+// 	return custs;
+// }
+// console.log(getCustomersFromLondon());
+
+
