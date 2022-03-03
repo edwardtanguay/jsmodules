@@ -10,3 +10,5 @@ import { products } from './products.js';
 // customers.filter(m => m.address.country === 'UK').forEach(customer => console.log(customer.companyName));
 customers.forEach(customer => console.log(customer.companyName));
 
+// (2) display city - customerName
+customers.forEach(m => console.log(`${m.address.city} - ${m.companyName}`));
