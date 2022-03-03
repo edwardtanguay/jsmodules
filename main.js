@@ -90,3 +90,20 @@ const getCustomerOrderObject = (customerId) => {
 // console.log(obj.orderIds.length);
 console.log(getCustomerOrderObject('AROUT'));
 console.log(getCustomerOrderObject('LEHMS'));
+
+title('(6) create function getProductsOrderedByCustomer(customerId) which returns an array of the names of products a customer has ordered');
+
+const getProductsOrderedByCustomer = (customerId) => {
+	const orderedProducts = []
+	orders.filter(m => m.customerID === customerId).forEach(order => {
+		order.details.forEach(product => {
+			orderedProducts.push(products.find(m => m.productID === product.productID).name);
+		});
+	});
+	return {
+		id: customerId,
+		name: customers.find(m => m.customerID === customerId).companyName,
+		orderedProducts
+	}
+};
+console.log(getProductsOrderedByCustomer('AROUT'));
