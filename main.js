@@ -77,3 +77,16 @@ ordersFirma.forEach(m => {
 	});
 });
 console.log(sum);
+
+title('(5) create function getCustomerOrderObject(customerId)');
+const getCustomerOrderObject = (customerId) => {
+	return {
+		id: customerId,
+		name: customers.find(m => m.customerID === customerId).companyName,
+		orderIds: orders.filter(m => m.customerID === customerId).map(m => m.orderID)
+	}
+};
+// const obj = getCustomerOrderObject('AROUT');
+// console.log(obj.orderIds.length);
+console.log(getCustomerOrderObject('AROUT'));
+console.log(getCustomerOrderObject('LEHMS'));
