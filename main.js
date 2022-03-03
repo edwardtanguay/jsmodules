@@ -50,3 +50,31 @@ const displayCustomerOrdersAndProducts = (customerId) => {
 	return `${customers.find(m => m.customerID === customerId).companyName} (${customerId}) has ${orders.filter(m => m.customerID === customerId).length} orders and ${numOfProducts} product kinds`;
 };
 console.log(displayCustomerOrdersAndProducts('AROUT'));
+
+title('(4.2) returns Around the Horn (AROUT) has 13 orders and 23 product kinds and 55 products')
+const displayCustomerOrdersAndProductsAndProductKinds = (customerId) => {
+	const numOfProductKinds = orders.filter(m => m.customerID === customerId).reduce((sum, order) => sum + order.details.length, 0);
+	const numOfProducts = orders.filter(m => m.customerID === customerId).reduce((sum, order) => {
+		const totalQuantity = order.details.reduce((acc, prod) => {
+			acc += prod.quantity;
+			return acc;
+		}, 0);
+		sum += totalQuantity;
+		return sum;
+	}, 0);
+	return `${customers.find(m => m.customerID === customerId).companyName} (${customerId}) has ${orders.filter(m => m.customerID === customerId).length} orders and ${numOfProductKinds} product kinds and ${numOfProducts} products`;
+};
+console.log(displayCustomerOrdersAndProductsAndProductKinds('AROUT'));
+
+
+//nnn
+const customerId = 'AROUT';
+const ordersFirma = orders.filter((m) => customerId === m.customerID);
+const myArray = [];
+ordersFirma.forEach(m => {
+	m.details.forEach(t => {
+		myArray.push(t.quantity);
+	});
+});
+
+console.log(myArray.reduce((acc, m) => acc + m, 0));
