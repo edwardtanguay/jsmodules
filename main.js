@@ -37,11 +37,16 @@ console.log(customers.filter(m => m.address.city === 'London'));
 // (4) create function displayCustomerOrders(customerId) which returns a string the following information:
 // console.log(displayCustomerOrders('AROUT'));
 // returns Around the Horn (AROUT) has 14 orders
-title('create function displayCustomerOrders(customerId)');
+title('(4) create function displayCustomerOrders(customerId)');
 const displayCustomerOrders = (customerId) => {
-
 	return `${customers.find(m => m.customerID === customerId).companyName} (${customerId}) has ${orders.filter(m => m.customerID === customerId).length} orders`;
 };
 console.log(displayCustomerOrders('AROUT'));
 console.log(displayCustomerOrders('SPLIR'));
 
+title('(4.1) returns Around the Horn (AROUT) has 13 orders and 23 products')
+const displayCustomerOrdersAndProducts = (customerId) => {
+	const numOfProducts = orders.filter(m => m.customerID === customerId).reduce((sum, order) => sum + order.details.length, 0);
+	return `${customers.find(m => m.customerID === customerId).companyName} (${customerId}) has ${orders.filter(m => m.customerID === customerId).length} orders and ${numOfProducts} product kinds`;
+};
+console.log(displayCustomerOrdersAndProducts('AROUT'));
