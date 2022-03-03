@@ -67,14 +67,13 @@ const displayCustomerOrdersAndProductsAndProductKinds = (customerId) => {
 console.log(displayCustomerOrdersAndProductsAndProductKinds('AROUT'));
 
 
-//nnn
+title('(4.3) another solution to 4.2')
 const customerId = 'AROUT';
 const ordersFirma = orders.filter((m) => customerId === m.customerID);
-const myArray = [];
+let sum = 0;
 ordersFirma.forEach(m => {
 	m.details.forEach(t => {
-		myArray.push(t.quantity);
+		sum += t.quantity;
 	});
 });
-
-console.log(myArray.reduce((acc, m) => acc + m, 0));
+console.log(sum);
